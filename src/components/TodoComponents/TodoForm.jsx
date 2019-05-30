@@ -1,6 +1,6 @@
 import React from 'react';
 // import './Todo.css';
-export default function TodoForm({ todoItem, changeHandler, addItem, enterBtn }) {
+export default function TodoForm({ todoItem, changeHandler, addItem, enterBtn, clearCompleted }) {
   return (
     <div>
       <input
@@ -11,8 +11,8 @@ export default function TodoForm({ todoItem, changeHandler, addItem, enterBtn })
         type="text"
         />
 
-      <button onCLick={addItem}>Add Todo</button>
-      <button>Clear Completed</button>
+      <button onClick={addItem}>Add Todo</button>
+      <button onClick={clearCompleted}>Clear Completed</button>
 
     </div>
   );

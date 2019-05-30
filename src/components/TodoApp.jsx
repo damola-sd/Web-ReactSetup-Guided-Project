@@ -52,24 +52,46 @@ class App extends Component {
       id: Date.now().toString(),
       completed: false
     };
-    
-
+   
     this.setState({
       todoList: this.state.todoList.concat(newItem),
-      todoItem: ''
+      todoItem: "",
     });
   };
+
+  toggleComplete = (id) => {
+    let todoList = this.state.todoList.slice();
+    todoList = todoList.map(item => {
+      if (item.id === id) {
+        item.completed = !item.completed;
+        return item;
+      }else {
+        return item;
+      };
+    });
+    this.setState({ todoList });
+  };
+
+  clearCompleted = () => {
+    const todoList = this.state.todoList.filter(item => !item.completed);
+    this.setState({ todoList });
+  };
+
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList items={this.state.todoList} />
+        <TodoList
+          items={this.state.todoList}
+          toggleComplete={this.toggleComplete} 
+        />
         <TodoForm
           todoItem={this.state.todoItem}
           changeHandler={this.changeHandler}
           enterBtn={this.enterButton}
           addItem={this.addItem}
+          clearCompleted={this.clearCompleted}
           />
       </div>
     );

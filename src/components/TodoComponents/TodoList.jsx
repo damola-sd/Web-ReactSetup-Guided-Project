@@ -3,11 +3,14 @@
 import React from 'react';
 import Todo from './Todo';
 
-export default function TodoList({ items }) {
+export default function TodoList({ items, toggleComplete }) {
   return (
     items.map(item => {
       return (
-        <Todo item={item} />
+        <Todo
+          item={item}
+          toggleComplete={toggleComplete}
+           />
       );
     })
   );
